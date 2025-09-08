@@ -8,6 +8,9 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "q", ":close<CR>", { noremap = true, silent = true })
 map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-map("n", "<leader>cf", ":lua require('conform').format()<CR>", { noremap = true, silent = true })
 
+--diffview
+map("n", "<leader>dq", "<Cmd>DiffviewClose<CR>")
+map("n", "<leader>dh", ":DiffviewFileHistory %<CR>")
+map("n", "<leader>dq", ":DiffviewOpen<CR>")
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

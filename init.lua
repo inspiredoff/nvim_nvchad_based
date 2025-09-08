@@ -23,6 +23,7 @@ require("lazy").setup({
   },
 
   { import = "plugins" },
+  { import = "plugins/ai" },
 }, lazy_config)
 
 -- load theme
@@ -35,3 +36,4 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+

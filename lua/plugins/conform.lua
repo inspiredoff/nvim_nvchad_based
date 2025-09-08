@@ -10,7 +10,8 @@ local spec = {
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "isort", "ruff", "black" }, -- добавляем isort, ruff и black
+      python = { "ruff", "isort", "black" }, -- добавляем isort, ruff и black
+      sql = { "pgformatter" },
     },
 
     formatters = {
@@ -23,9 +24,24 @@ local spec = {
       },
       isort = {
         args = {
-          "--profile", "black", -- профиль для совместимости с black
-          "--line-length", "120", -- длина строки
+          "--profile",
+          "black", -- профиль для совместимости с black
+          "--line-length",
+          "120", -- длина строки
         },
+      },
+      pgformatter = {
+        command = "pg_format",
+        args = {
+          "-i",
+          "-u",
+          "1",
+          "-k",
+          "-B",
+          "-f",
+          "1",
+        },
+        stdin = true,
       },
     },
 
