@@ -52,6 +52,12 @@ require("lspconfig").mypy.setup {
     on_init = require("nvchad.configs.lspconfig").on_init,
     capabilities = require("nvchad.configs.lspconfig").capabilities,
     settings = {
+        mypy = {
+            args = {
+                "--follow-imports", "skip",
+                "--config-file", "${mypy_ini_path}"
+            }
+        }
     }
 }
 
