@@ -14,7 +14,7 @@ end
 ---@type NvPluginSpec
 local spec = {
   "nvim-tree/nvim-tree.lua",
-  cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+  cmd = {"NvimTreeToggle", "NvimTreeFindFile" },
   ft = {}, -- можно оставить пустым, если не нужен
   opts = {
     view = {
@@ -40,3 +40,4 @@ local spec = {
 }
 
 return spec
+

@@ -41,6 +41,11 @@ return {
       require("tiny-inline-diagnostic").setup {
         preset = "powerline",
         -- transparent_bg = true,
+        options = {
+          show_source = {
+            enabled = true,
+          },
+        },
       }
       vim.diagnostic.config { virtual_text = false }
     end,
@@ -84,6 +89,14 @@ return {
         "python",
       },
     },
+  },
+  {
+    "oribarilan/lensline.nvim",
+    tag = "2.0.0", -- or: branch = 'release/2.x' for latest non-breaking updates
+    event = "LspAttach",
+    config = function()
+      require("lensline").setup()
+    end,
   },
 }
 

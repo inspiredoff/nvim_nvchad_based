@@ -3,11 +3,12 @@ local spec = {
   "NeogitOrg/neogit",
   cmd = "Neogit",
   ft = { "diff" },
+  dependencies = {"sindrets/diffview.nvim"},
 
   opts = {
     signs = { section = { "", "" }, item = { "", "" } },
     disable_commit_confirmation = true,
-    integrations = { diffview = true },
+    integrations = { diffview = true, telescope = true, fzf_lua = true },
   },
   config = function(_, opts)
     require("neogit").setup(opts)

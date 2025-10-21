@@ -61,7 +61,7 @@ local specs = {
       vk_copilot = {
         __inherited_from = "openai",
         endpoint = "https://api.copilot.vk.team/v1",
-        api_key = os.getenv "AVANTE_API_KEY" or "sk-123", -- Use env var or fallback to default (should be changed!)
+        api_key = "sk-123", -- Use env var (required)
         model = "qwen-3-32b",
         -- timeout = 30000, -- Timeout in milliseconds
         extra_request_body = {
@@ -71,7 +71,7 @@ local specs = {
       },
     },
     input = {
-      provider = "snacks",
+      provider = "native",
       provider_opts = {
         -- Additional snacks.input options
         title = "Avante Input",
@@ -81,16 +81,15 @@ local specs = {
     selector = {
       ---@alias avante.SelectorProvider "native" | "fzf_lua" | "mini_pick" | "snacks" | "telescope" | fun(selector: avante.ui.Selector): nil
       ---@type avante.SelectorProvider
-      provider = "snacks",
+      provider = "native",
       provider_opts = {},
       exclude_auto_select = {}, -- List of items to exclude from auto selection
     },
     behavior = {
       auto_suggestions = true,
-      minimize_diff = false,
+      minimize_diff = true,
       auto_focus_on_diff_view = true,
     },
-    -- Additional settings for file operations
   },
 
   config = function(_, opts)
