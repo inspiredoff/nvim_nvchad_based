@@ -12,7 +12,7 @@ local spec = {
       { name = "avante", priority = 1500},
     },
     performance = {
-        fetching_timeout = 2000,
+        fetching_timeout = 10000,
     },
   },
 
