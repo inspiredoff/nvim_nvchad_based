@@ -16,22 +16,35 @@ map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { noremap = true, s
 -- -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 --refactor
+-- map({ "n", "x" }, "<leader>rr", function()
+--   local success, result = pcall(function()
+--     require("refactoring").select_refactor({prefer_ex_cmd = true})
+--   end)
+--
+--   if not success then
+--     -- Handle the case where there are no refactorable items
+--     if result:match("no function usages to inline") or result:match("no refactorable items") then
+--       vim.notify("No refactorable items found in current context", vim.log.levels.WARN)
+--     else
+--       -- Re-raise the error if it's not the expected one
+--       error(result)
+--     end
+--   end
+-- end, { desc = "select refactor" })
+
 map({ "n", "x" }, "<leader>rr", function()
-  local success, result = pcall(function()
-    require("refactoring").select_refactor({prefer_ex_cmd = true})
-  end)
-
-  if not success then
-    -- Handle the case where there are no refactorable items
-    if result:match("no function usages to inline") or result:match("no refactorable items") then
-      vim.notify("No refactorable items found in current context", vim.log.levels.WARN)
-    else
-      -- Re-raise the error if it's not the expected one
-      error(result)
-    end
-  end
+  require("refactoring").select_refactor { prefer_ex_cmd = true }
 end, { desc = "select refactor" })
+map({ "x", "n" }, "<leader>rv", function()
+  require("refactoring").debug.print_var()
+end)
+map("n", "<leader>rp", function()
+  require("refactoring").debug.printf { below = true }
+end)
 
+map("n","<leader>tp", function ()
+  require("triforce").show_profile()
+end)
 --Neogit
 map("n", "<leader>gr", "<Cmd>Neogit<CR>", { desc = "Neogit" })
 

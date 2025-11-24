@@ -8,12 +8,22 @@ local spec = {
   lazy = false,
 
   opts = {
+    prompt_func_return_type = {
+      py = true,
+    },
+    prompt_func_param_type = {
+      py = true,
+    },
+    print_var_statements = {
+      py = {
+        'logging.info(f"!_!_!__!_!_! $s: {%s})',
+      },
+    },
+    show_success_message = false,
   },
 
-
   config = function(_, opts)
-    local cmp = require "refactoring"
-    cmp.setup(opts)
+    require("refactoring").setup(opts)
   end,
 }
 
