@@ -40,3 +40,20 @@ vim.lsp.config("mypy", {
 })
 vim.lsp.enable "mypy"
 
+vim.lsp.config("postgres_lsp", {
+  cmd = { "postgres-language-server", "lsp-proxy" },
+  settings = {
+    schema = "https://pg-language-server.com/latest/schema.json",
+    db = {
+      host = "localhost",
+      port = 6432,
+      username = "tetrika",
+      password = "postgres",
+      database = "tetrika",
+      connTimeoutSecs = 10,
+    },
+  },
+})
+
+vim.lsp.enable "postgres_lsp"
+

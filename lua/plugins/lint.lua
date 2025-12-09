@@ -7,14 +7,13 @@ local spec = {
   cmd = nil,
 
   -- Можно указать файлы типа, для которых активен lint (опционально)
-  ft = { "lua", "python", "sql" },
+  ft = { "lua", "python"},
 
   -- Опции для настройки lint
   opts = {
     linters_by_ft = {
       lua = { "selene" },
       python = { "ruff", "mypy" },
-      sql = { "sqlfluff" },
     },
 
     -- аргументы для luacheck (можно вынести в opts или оставить внутри)

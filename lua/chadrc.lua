@@ -33,6 +33,7 @@ M.ui = {
       "lsp_msg",
       "%=",
       "diagnostics",
+      "lsp",
       "session_time",
       "streak",
       "achivments",

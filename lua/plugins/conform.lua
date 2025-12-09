@@ -33,7 +33,7 @@ local spec = {
       pgformatter = {
         command = "pg_format",
         args = {
-          "-w",120,
+          "-w",80,
           "-B",
           "-W", 50,
           "-u","1",
