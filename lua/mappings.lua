@@ -46,5 +46,6 @@ map("n","<leader>tp", function ()
   require("triforce").show_profile()
 end)
 --Neogit
-map("n", "<leader>gr", "<Cmd>Neogit<CR>", { desc = "Neogit" })
+map("n", "<leader>gr", "<Cmd>Neogit<CR>", { desc = " Neogit" })
+map("n", "<leader>gm", "<Cmd>:lua require('gitlab').choose_merge_request()<CR>", { desc = " choose_merge_request" })
 

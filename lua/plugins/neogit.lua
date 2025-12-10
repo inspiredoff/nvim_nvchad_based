@@ -7,7 +7,8 @@ local spec = {
     {
       "sindrets/diffview.nvim",
       opts = {
-        view = {
+          enhanced_diff_hl = true,
+          view = {
           merge_tool = {
             -- Config for conflicted files in diff views during a merge or rebase.
             layout = "diff3_mixed",
@@ -22,7 +23,7 @@ local spec = {
   opts = {
     signs = { section = { "", "" }, item = { "", "" } },
     disable_commit_confirmation = true,
-    integrations = { diffview = true, fzf_lua = true },
+    integrations = { diffview = true , fzf_lua = true },
   },
   config = function(_, opts)
     require("neogit").setup(opts)
