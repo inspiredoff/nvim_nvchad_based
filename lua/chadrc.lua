@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "ayu_light",
+  theme = "gruvbox_light",
 
   hl_override = {
     Comment = { italic = true },
@@ -27,6 +27,25 @@ M.nvdash = {
     { txt = " Gitlab mr", keys = "gm", cmd = ":lua require('gitlab').choose_merge_request()"},
 
     { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
+
+    {
+      txt = function()
+        -- Get current Git branch name
+        local branch = "main"  -- default fallback
+        local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+        if handle then
+          local result = handle:read("*a")
+          handle:close()
+          if result and result ~= "" then
+            branch = string.gsub(result, "\n$", "")
+          end
+        end
+        return "  " .. branch
+      end,
+      hl = "NvDashFooter",
+      no_gap = true,
+      content = "fit",
+    },
 
     {
       txt = function()

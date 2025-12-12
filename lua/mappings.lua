@@ -49,3 +49,6 @@ end)
 map("n", "<leader>gr", "<Cmd>Neogit<CR>", { desc = " Neogit" })
 map("n", "<leader>gm", "<Cmd>:lua require('gitlab').choose_merge_request()<CR>", { desc = " choose_merge_request" })
 
+--Neotest
+map("n", "<leader>Tr", "<Cmd>:lua require('neotest').run.run()<CR>", {desc = "Run Test"})
+
