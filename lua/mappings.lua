@@ -51,5 +51,7 @@ map("n", "<leader>gm", "<Cmd>:lua require('gitlab').choose_merge_request()<CR>",
 
 --Neotest
 map("n", "<leader>Tm", "<Cmd>:!sh /home/inspiredoff/.config/nvim/lua/scripts.sh<CR>", { desc = "commit migration" })
-map("n", "<leader>Tr", "<Cmd>:lua require('neotest').run.run()<CR>", {desc = "Run Test"})
+map("n", "<leader>Tr", "<Cmd>:lua require('neotest').run.run(vim.fn.expand('%'))<CR>", {desc = "Run Test"})
+map("n", "<leader>Ts", "<Cmd>:lua require('neotest').summary.toggle()<CR>", {desc = "run summary"})
+map("n", "<leader>To", "<Cmd>:lua require('neotest').output_panel.open()<CR>", {desc = "run output_panel"})
 

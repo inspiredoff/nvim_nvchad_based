@@ -6,9 +6,12 @@ vim.lsp.enable(servers)
 vim.lsp.config("basedpyright", {
   settings = {
     basedpyright = {
-      -- disableLanguageServices = true,
       analysis = {
-        extraPaths = { "./app" },
+        extraPaths = {
+          "./app",
+          "~/application/backend_common",
+          "/home/inspiredoff/.cache/pypoetry/virtualenvs/tetrika-ZYoIW3hS-py3.13/lib/python3.13/site-packages",
+        },
         autoSearchPaths = true,
         diagnosticMode = "workspace",
         useLibraryCodeForTypes = true,
@@ -59,7 +62,9 @@ vim.lsp.enable "postgres_lsp"
 
 vim.lsp.config("eslint", {
   on_attach = function(client, bufnr)
-    if not vim.lsp.config.eslint.on_attach then return end
+    if not vim.lsp.config.eslint.on_attach then
+      return
+    end
 
     vim.lsp.config.eslint.on_attach(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
