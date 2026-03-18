@@ -76,3 +76,6 @@ vim.lsp.config("eslint", {
 
 vim.lsp.enable "eslint"
 
+vim.lsp.enable "clangd"
+vim.lsp.enable "clang-format"
+

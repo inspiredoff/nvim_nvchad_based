@@ -6,13 +6,22 @@
 local M = {}
 
 M.base46 = {
-  theme = "ashes",
+  theme = "blossom_light",
 
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
   },
-  integrations = { "neogit", "diffview" },
+  transparency = true,
+
+  integrations = {
+    telescope = true,
+    nvimtree = true,
+    lsp = true,
+    cmp = true,
+    whichkey = true,
+    indent_blankline = true,
+  },
 }
 
 M.nvdash = {
@@ -24,17 +33,17 @@ M.nvdash = {
     { txt = "󱥚  Themes", keys = "th", cmd = ":lua require('nvchad.themes').open()" },
     { txt = "  Mappings", keys = "ch", cmd = "NvCheatsheet" },
     { txt = "  Neogit", keys = "gr", cmd = "Neogit" },
-    { txt = " Gitlab mr", keys = "gm", cmd = ":lua require('gitlab').choose_merge_request()"},
+    { txt = " Gitlab mr", keys = "gm", cmd = ":lua require('gitlab').choose_merge_request()" },
 
     { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
 
     {
       txt = function()
         -- Get current Git branch name
-        local branch = "main"  -- default fallback
-        local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+        local branch = "main" -- default fallback
+        local handle = io.popen "git rev-parse --abbrev-ref HEAD 2>/dev/null"
         if handle then
-          local result = handle:read("*a")
+          local result = handle:read "*a"
           handle:close()
           if result and result ~= "" then
             branch = string.gsub(result, "\n$", "")

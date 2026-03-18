@@ -76,7 +76,6 @@ return {
       require "configs.conform"
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -96,6 +95,17 @@ return {
     event = "LspAttach",
     config = function()
       require("lensline").setup()
+    end,
+  },
+  {
+    "kosayoda/nvim-lightbulb",
+    config = function()
+      require("nvim-lightbulb").setup {
+        code_lenses = true,
+        autocmd = { enabled = true },
+        sign = { enabled = true },
+        float = { enabled = true },
+      }
     end,
   },
 }
