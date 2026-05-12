@@ -12,7 +12,7 @@ M.base46 = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
   },
-  transparency = true,
+  transparency = false,
 
   integrations = {
     telescope = true,

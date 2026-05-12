@@ -26,21 +26,6 @@ local specs = {
     -- AI provider support
     "zbirenbaum/copilot.lua", -- for providers='copilot'
 
-    -- Image support
-    {
-      "HakonHarnes/img-clip.nvim",
-      opts = {
-        default = {
-          embed_image_as_base64 = false,
-          prompt_for_file_name = false,
-          drag_and_drop = {
-            insert_mode = true,
-          },
-          use_absolute_path = true, -- required for Windows users
-        },
-      },
-    },
-
     -- Markdown rendering
     {
       "MeanderingProgrammer/render-markdown.nvim",
@@ -61,17 +46,17 @@ local specs = {
       vk_copilot = {
         __inherited_from = "openai",
         endpoint = "https://api.copilot.vk.team/v1",
-        api_key = "sk-123", -- Use env var (required)
+        -- endpoint = "https://ai-proxy.vk.team/v1",
         model = "qwen3-coder",
         -- timeout = 30000, -- Timeout in milliseconds
         extra_request_body = {
           temperature = 0.75,
-          max_tokens = 64000,
+          max_tokens = 16384,
         },
       },
     },
     input = {
-      provider = "native",
+      provider = "snacks",
       provider_opts = {
         -- Additional snacks.input options
         title = "Avante Input",
@@ -81,14 +66,50 @@ local specs = {
     selector = {
       ---@alias avante.SelectorProvider "native" | "fzf_lua" | "mini_pick" | "snacks" | "telescope" | fun(selector: avante.ui.Selector): nil
       ---@type avante.SelectorProvider
-      provider = "native",
+      provider = "snacks",
       provider_opts = {},
       exclude_auto_select = {}, -- List of items to exclude from auto selection
     },
+    -- 🔹 Поведение
     behavior = {
       auto_suggestions = true,
       minimize_diff = true,
       auto_focus_on_diff_view = true,
+      confirmation_ui_style = "popup",
+      auto_apply_diff_after_generation = false,
+      enable_token_counting = true,
+      auto_add_current_file = true,
+      support_paste_from_clipboard = true,
+      auto_approve_tool_permissions = false, -- 🔐 Запрашивать подтверждение для инструментов
+    },
+    windows = {
+      position = "right", -- Позиция сайдбара: "right" | "left" | "top" | "bottom"
+      wrap = true, -- Перенос строк
+      width = 30, -- Ширина в % от экрана
+
+      sidebar_header = {
+        enabled = true,
+        align = "center",
+        rounded = true,
+      },
+
+      spinner = { -- Анимации загрузки
+        editing = { "⡀", "⠄", ... },
+        generating = { "·", "✢", "✳", ... },
+        thinking = { "🤯", "🙄" }, -- 😄
+      },
+
+      input = {
+        prefix = "> ",
+        height = 15, -- Высота поля ввода в вертикальном режиме
+      },
+
+      ask = {
+        floating = false, -- Открыть запрос в плавающем окне
+        start_insert = true, -- Сразу войти в режим вставки
+        border = "rounded",
+        focus_on_apply = "ours", -- На какой дифф фокусироваться после применения
+      },
     },
   },
 
